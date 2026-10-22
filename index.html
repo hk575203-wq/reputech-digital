@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Smart Review Accelerator | Next-Gen NFC Standees</title>
+  <style>
+    :root {
+      --bg: #09090b;
+      --card-bg: #141417;
+      --card-inner: #1c1c21;
+      --gold: #d4af37;
+      --gold-light: #fef08a;
+      --gold-grad: linear-gradient(135deg, #fef08a 0%, #d4af37 50%, #996515 100%);
+      --text: #ffffff;
+      --text-muted: #a1a1aa;
+      --border: rgba(212, 175, 55, 0.25);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --green: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 14px;
+      line-height: 1.5;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 440px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Agency Header */
+    .header {
+      text-align: center;
+      padding: 16px 8px 6px;
+    }
+
+    .badge-agency {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #18181c;
+      border: 1px solid var(--border);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold-light);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .dot-live {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+    }
+
+    .hero-title {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+
+    .hero-title span {
+      background: var(--gold-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Core Impact Stat Box */
+    .stats-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 14px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      text-align: center;
+      gap: 8px;
+    }
+
+    .stat-number {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--gold-light);
+    }
+
+    .stat-label {
+      font-size: 10.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Problem vs Solution */
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .flow-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--card-inner);
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .step-icon {
+      font-size: 18px;
+      line-height: 1;
+      padding-top: 2px;
+    }
+
+    .step-text h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .step-text p {
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    /* What Store Gets */
+    .features-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #eaeaea;
+    }
+
+    .feature-check {
+      color: var(--green);
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    /* Live Demos Section */
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .demo-btn {
+      background: var(--card-inner);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 12px 10px;
+      text-align: center;
+      text-decoration: none;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      transition: border 0.15s;
+    }
+
+    .demo-btn:active {
+      border-color: var(--gold);
+      background: #23232a;
+    }
+
+    .demo-name {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--gold-light);
+    }
+
+    .demo-type {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    /* CTA Section */
+    .cta-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .btn-main-whatsapp {
+      width: 100%;
+      padding: 16px;
+      border-radius: 14px;
+      border: none;
+      background: #25D366;
+      color: #0b2512;
+      font-size: 14.5px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-main-whatsapp:active {
+      transform: scale(0.98);
+    }
+
+    .btn-call {
+      width: 100%;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #17171c;
+      color: #fff;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .btn-call:active {
+      background: #22222a;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 10px 0 16px;
+      font-size: 11px;
+      color: #71717a;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="header">
+      <div class="badge-agency">
+        <span class="dot-live"></span> Smart Review Accelerator
+      </div>
+      <h1 class="hero-title">
+        Get 10x More 5-Star <span>Google Reviews</span>
+      </h1>
+      <p class="hero-desc">
+        Next-gen contactless NFC & QR standees built for luxury retail stores, restaurants, and showrooms.
+      </p>
+    </header>
+
+    <!-- Impact Stats -->
+    <div class="stats-card">
+      <div>
+        <div class="stat-number">15s</div>
+        <div class="stat-label">Review Time</div>
+      </div>
+      <div>
+        <div class="stat-number">+400%</div>
+        <div class="stat-label">More Reviews</div>
+      </div>
+      <div>
+        <div class="stat-number">0%</div>
+        <div class="stat-label">Typing Effort</div>
+      </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="section-card">
+      <div class="section-title">⚡ How It Works For Customers</div>
+      
+      <div class="flow-step">
+        <div class="step-icon">📱</div>
+        <div class="step-text">
+          <h4>1. Just Tap or Scan</h4>
+          <p>Customer taps their phone on the acrylic standee or scans the QR code. Zero apps to install.</p>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-icon">✨</div>
+        <div class="step-text">
+          <h4>2. Instant AI-Unique Review</h4>
+          <p>Portal instantly generates a fresh, authentic 5-star review tailored to your store's services.</p>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-icon">⭐</div>
+        <div class="step-text">
+          <h4>3. 1-Click Paste & Post</h4>
+          <p>Customer taps "Copy & Rate", and Google directly opens up to paste and submit in 2 seconds.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- What Retailers Get -->
+    <div class="section-card">
+      <div class="section-title">💎 What Your Store Gets</div>
+      <div class="features-list">
+        <div class="feature-item">
+          <span class="feature-check">✓</span> 5x7" Piano-Black Luxury Acrylic Standee
+        </div>
+        <div class="feature-item">
+          <span class="feature-check">✓</span> Invisible NTAG216 High-Speed NFC Integration
+        </div>
+        <div class="feature-item">
+          <span class="feature-check">✓</span> 4,000+ Non-Repetitive Review Anti-Spam Engine
+        </div>
+        <div class="feature-item">
+          <span class="feature-check">✓</span> Lightning Fast Web App (0ms Load Time)
+        </div>
+        <div class="feature-item">
+          <span class="feature-check">✓</span> Store Map, Call & Instagram Links on Same Page
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Client Demos -->
+    <div class="section-card">
+      <div class="section-title">🔍 Try Our Live Client Demos</div>
+      <div class="demo-grid">
+        <a href="https://hk575203-wq.github.io/Theoutfitnation/" class="demo-btn" target="_blank">
+          <div style="font-size: 20px;">👕</div>
+          <div class="demo-name">The Outfit Nation</div>
+          <div class="demo-type">Streetwear & Casuals</div>
+        </a>
+        <a href="https://hk575203-wq.github.io/raymond-indore/" class="demo-btn" target="_blank">
+          <div style="font-size: 20px;">👔</div>
+          <div class="demo-name">The Raymond Shop</div>
+          <div class="demo-type">TI Mall, Indore</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Contact & Pitch CTAs -->
+    <div class="cta-container">
+      <a href="https://wa.me/917477237731?text=Hi!%20I%20scanned%20your%20Review%20Standee%20and%20want%20to%20get%20one%20for%20my%20store." class="btn-main-whatsapp" target="_blank">
+        <span>💬</span> ORDER A STANDEE ON WHATSAPP
+      </a>
+      <a href="tel:+917477237731" class="btn-call">
+        <span>📞</span> CALL FOR FREE STORE DEMO
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      Smart Review Accelerator • Bhopal & Indore<br>
+      Empowering local retail with contactless tech.
+    </footer>
+
+  </div>
+
+</body>
+</html>
