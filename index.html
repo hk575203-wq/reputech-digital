@@ -202,30 +202,31 @@
       background: var(--card-inner);
       border: 1px solid var(--border-subtle);
       border-radius: 12px;
-      padding: 12px 10px;
+      padding: 14px 10px;
       text-align: center;
       text-decoration: none;
       color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
-      transition: border 0.15s;
+      gap: 6px;
+      transition: all 0.2s ease;
     }
 
     .demo-btn:active {
       border-color: var(--gold);
       background: #23232a;
+      transform: scale(0.97);
     }
 
     .demo-name {
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 800;
       color: var(--gold-light);
     }
 
     .demo-type {
-      font-size: 10px;
+      font-size: 10.5px;
       color: var(--text-muted);
     }
 
@@ -243,9 +244,9 @@
       border-radius: 14px;
       border: none;
       background: #25D366;
-      color: #0b2512;
+      color: #08210f;
       font-size: 14.5px;
-      font-weight: 900;
+      font-weight: 800;
       letter-spacing: 0.5px;
       cursor: pointer;
       display: flex;
@@ -253,7 +254,8 @@
       justify-content: center;
       gap: 8px;
       text-decoration: none;
-      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+      box-shadow: 0 4px 18px rgba(37, 211, 102, 0.25);
+      transition: transform 0.15s ease;
     }
 
     .btn-main-whatsapp:active {
@@ -262,28 +264,31 @@
 
     .btn-call {
       width: 100%;
-      padding: 14px;
+      padding: 15px;
       border-radius: 14px;
       border: 1px solid var(--border);
-      background: #17171c;
-      color: #fff;
-      font-size: 13.5px;
+      background: var(--card-inner);
+      color: #ffffff;
+      font-size: 14px;
       font-weight: 700;
+      letter-spacing: 0.5px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
       text-decoration: none;
+      transition: all 0.15s ease;
     }
 
     .btn-call:active {
-      background: #22222a;
+      background: #24242c;
+      transform: scale(0.98);
     }
 
     .footer {
       text-align: center;
-      padding: 10px 0 16px;
+      padding: 8px 0 16px;
       font-size: 11px;
       color: #71717a;
     }
@@ -373,7 +378,7 @@
       </div>
     </div>
 
-    <!-- Live Demos Section -->
+    <!-- Live Demos Section (Fixed Link with Capital 'R') -->
     <div class="section-card">
       <div class="section-title">🔍 Try Our Live Demo Websites</div>
       <div class="demo-grid">
@@ -382,7 +387,7 @@
           <div class="demo-name">Café Provence</div>
           <div class="demo-type">Bistro & Fine Dining</div>
         </a>
-        <a href="https://hk575203-wq.github.io/raymond-indore/" class="demo-btn" target="_blank">
+        <a href="https://hk575203-wq.github.io/Raymond-indore/" class="demo-btn" target="_blank">
           <div style="font-size: 22px;">👔</div>
           <div class="demo-name">The Raymond Shop</div>
           <div class="demo-type">Formal Wear & Tailoring</div>
@@ -390,13 +395,13 @@
       </div>
     </div>
 
-    <!-- Contact & Order CTAs -->
+    <!-- Contact & Order CTAs (Clean, No Raw Numbers) -->
     <div class="cta-container">
       <a href="https://wa.me/918319949010?text=Hi%20Reputech%20Digital,%20I%20checked%20your%20Smart%20Review%20Standee%20demo%20and%20want%20to%20get%20one%20for%20my%20business." class="btn-main-whatsapp" target="_blank">
-        <span>💬</span> CHAT ON WHATSAPP: 8319949010
+        <span>💬</span> Connect on WhatsApp
       </a>
       <a href="tel:+919993305505" class="btn-call">
-        <span>📞</span> CALL FOR DEMO: 9993305505
+        <span>📞</span> Schedule a Live Store Demo
       </a>
     </div>
 
