@@ -3,22 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Sayaji Hotel Indore | Guest Portal & 5-Star Reviews</title>
+  <title>Reputech Digital | Smart Google Review Solutions</title>
   <style>
     :root {
-      --bg: #08090a;
-      --card: #13171b;
-      --card-inner: #1a2026;
+      --bg: #09090b;
+      --card-bg: #141417;
+      --card-inner: #1c1c21;
       --gold: #d4af37;
       --gold-light: #fef08a;
       --gold-grad: linear-gradient(135deg, #fef08a 0%, #d4af37 50%, #996515 100%);
-      --emerald: #10b981;
       --text: #ffffff;
-      --text-sub: #9ca3af;
-      --border: rgba(212, 175, 55, 0.28);
+      --text-muted: #a1a1aa;
+      --border: rgba(212, 175, 55, 0.25);
       --border-subtle: rgba(255, 255, 255, 0.08);
-      --veg: #22c55e;
-      --nonveg: #ef4444;
+      --green: #10b981;
     }
 
     * {
@@ -35,10 +33,8 @@
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      padding: 12px;
-      background-image: 
-        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.16) 0%, transparent 65%),
-        radial-gradient(circle at 50% 100%, rgba(16, 185, 129, 0.1) 0%, transparent 60%);
+      padding: 14px;
+      line-height: 1.5;
     }
 
     .container {
@@ -46,563 +42,255 @@
       max-width: 440px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 16px;
     }
 
-    /* हेडर */
+    /* Header */
     .header {
       text-align: center;
-      padding: 14px 8px 4px;
+      padding: 16px 8px 6px;
     }
 
-    .hotel-badge {
-      font-size: 10px;
-      letter-spacing: 3px;
-      color: var(--gold);
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 2px;
-    }
-
-    .brand-title {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 32px;
-      font-weight: bold;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #ffffff;
-      margin: 2px 0 4px;
-      text-shadow: 0 2px 14px rgba(0,0,0,0.8);
-    }
-
-    .hotel-sub {
-      font-size: 11px;
-      color: var(--text-sub);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-
-    .rating-pill {
+    .badge-agency {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: #171d24;
+      background: #18181c;
       border: 1px solid var(--border);
-      padding: 4px 12px;
+      padding: 5px 14px;
       border-radius: 20px;
       font-size: 11.5px;
-      margin-top: 8px;
-    }
-
-    .stars {
-      color: #f59e0b;
-      letter-spacing: 2px;
-    }
-
-    /* मुख्य नेविगेशन टैब्स */
-    .nav-tabs {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      background: #0f1317;
-      border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 4px;
-      gap: 4px;
-    }
-
-    .tab-btn {
-      background: transparent;
-      border: 1px solid transparent;
-      color: var(--text-sub);
-      padding: 10px 2px;
-      border-radius: 8px;
-      font-size: 11px;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      transition: all 0.15s ease;
-    }
-
-    .tab-btn:active {
-      transform: scale(0.96);
-    }
-
-    .tab-btn.active {
-      background: var(--card-inner);
+      font-weight: 800;
       color: var(--gold-light);
-      border: 1px solid var(--border);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
     }
 
-    .tab-icon {
-      font-size: 15px;
-    }
-
-    /* टैब सेक्शन डिस्प्ले */
-    .tab-content {
-      display: none;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .tab-content.active {
-      display: flex !important;
-    }
-
-    /* मॉड्यूल 1: 5-स्टार रिव्यूज */
-    .steps {
-      display: flex;
-      justify-content: space-between;
-      background: #101418;
-      padding: 8px 12px;
-      border-radius: 10px;
-      border: 1px solid var(--border-subtle);
-      font-size: 11px;
-      color: var(--text-sub);
-    }
-
-    .step-num {
-      background: var(--gold);
-      color: #000;
-      border-radius: 50%;
-      width: 16px;
-      height: 16px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 9.5px;
-      font-weight: bold;
-      margin-right: 4px;
-    }
-
-    .pills {
-      display: flex;
-      gap: 6px;
-      overflow-x: auto;
-      padding-bottom: 4px;
-      scrollbar-width: none;
-    }
-    .pills::-webkit-scrollbar { display: none; }
-
-    .pill-btn {
-      background: #161b20;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #9ca3af;
-      padding: 8px 13px;
-      border-radius: 10px;
-      font-size: 11px;
-      font-weight: bold;
-      white-space: nowrap;
-      cursor: pointer;
-    }
-
-    .pill-btn:active {
-      transform: scale(0.96);
-    }
-
-    .pill-btn.active {
-      background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
-      color: #ffffff;
-      border-color: var(--gold);
-    }
-
-    .toolbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 4px;
-    }
-
-    .live-status {
-      font-size: 11px;
-      color: var(--gold);
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .dot {
+    .dot-live {
       width: 6.5px;
       height: 6.5px;
       border-radius: 50%;
-      background: #10b981;
-      box-shadow: 0 0 8px #10b981;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
     }
 
-    .lang-box {
-      display: flex;
-      background: #101418;
-      border: 1px solid var(--border-subtle);
-      border-radius: 6px;
-      padding: 2px;
-    }
-
-    .lang-btn {
-      background: transparent;
-      border: none;
-      color: #888;
-      font-size: 11px;
-      font-weight: bold;
-      padding: 3px 10px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .lang-btn.active {
-      background: #1f2730;
-      color: #fff;
-    }
-
-    .review-box {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 16px;
-      min-height: 98px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    .review-content {
-      font-size: 13.5px;
-      line-height: 1.55;
-      color: #f3f4f6;
-      font-weight: 500;
-    }
-
-    .btn-shuffle {
-      width: 100%;
-      padding: 12px;
-      border-radius: 12px;
-      border: 1px dashed var(--border);
-      background: #14191f;
-      color: var(--gold-light);
-      font-size: 12.5px;
-      font-weight: bold;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    .btn-shuffle:active {
-      background: #1e2630;
-      transform: scale(0.98);
-    }
-
-    .btn-cta {
-      width: 100%;
-      padding: 15px;
-      border-radius: 14px;
-      border: none;
-      background: var(--gold-grad);
-      color: #0b0d10;
-      font-size: 14.5px;
+    .hero-title {
+      font-size: 26px;
       font-weight: 900;
-      letter-spacing: 0.5px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      box-shadow: 0 4px 18px rgba(212, 175, 55, 0.35);
-      text-decoration: none;
+      letter-spacing: -0.5px;
+      line-height: 1.25;
+      margin-bottom: 6px;
     }
 
-    .btn-cta:active {
-      transform: scale(0.98);
+    .hero-title span {
+      background: var(--gold-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .btn-cta.copied {
-      background: #10b981 !important;
-      color: #fff !important;
-    }
-
-    /* मॉड्यूल 2: इंटरएक्टिव डिजिटल मेन्यू कार्ट */
-    .menu-card {
-      background: var(--card);
-      border: 1px solid var(--border-subtle);
-      border-radius: 14px;
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .menu-header {
-      font-size: 12.5px;
-      font-weight: 800;
-      color: var(--gold-light);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      border-bottom: 1px solid var(--border-subtle);
-      padding-bottom: 6px;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .menu-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 0;
-      border-bottom: 1px dashed rgba(255,255,255,0.06);
-    }
-    .menu-item:last-child { border-bottom: none; }
-
-    .item-info {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .item-name {
+    .hero-desc {
       font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Stats */
+    .stats-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 14px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      text-align: center;
+      gap: 8px;
+    }
+
+    .stat-number {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--gold-light);
+    }
+
+    .stat-label {
+      font-size: 10.5px;
+      color: var(--text-muted);
       font-weight: 600;
-      color: #f3f4f6;
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .section-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--gold);
       display: flex;
       align-items: center;
       gap: 6px;
     }
 
-    .item-tag-veg {
-      width: 9px;
-      height: 9px;
-      border: 1px solid var(--veg);
-      border-radius: 2px;
-      background: var(--veg);
-      display: inline-block;
-    }
-
-    .item-tag-nonveg {
-      width: 9px;
-      height: 9px;
-      border: 1px solid var(--nonveg);
-      border-radius: 2px;
-      background: var(--nonveg);
-      display: inline-block;
-    }
-
-    .item-price {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--gold);
-    }
-
-    .item-actions {
+    .flow-step {
       display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .qty-btn {
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      background: #1f2732;
-      color: #fff;
-      font-size: 14px;
-      font-weight: bold;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .qty-btn:active {
-      background: var(--gold);
-      color: #000;
-    }
-
-    .qty-count {
-      font-size: 13px;
-      font-weight: 800;
-      width: 14px;
-      text-align: center;
-    }
-
-    .cart-summary-bar {
-      background: #0f141a;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px 14px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    /* मॉड्यूल 3: प्रैक्टिकल वाई-फाई और रूम सर्विस */
-    .room-selector-box {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 10px 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .room-input {
-      background: #0e1216;
-      border: 1px solid var(--border-subtle);
-      color: var(--gold-light);
-      font-size: 15px;
-      font-weight: bold;
-      width: 90px;
-      padding: 6px 10px;
-      border-radius: 6px;
-      text-align: center;
-      outline: none;
-    }
-
-    .wifi-hero-card {
-      background: linear-gradient(135deg, #161e27 0%, #0d1217 100%);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
+      align-items: flex-start;
       gap: 10px;
+      background: var(--card-inner);
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .wifi-header-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .step-icon {
+      font-size: 18px;
+      line-height: 1;
+      padding-top: 2px;
     }
 
-    .wifi-details {
-      background: #0c0f13;
-      border: 1px solid var(--border-subtle);
-      border-radius: 10px;
-      padding: 10px;
+    .step-text h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .step-text p {
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    /* Features */
+    .features-list {
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      font-size: 12px;
+      gap: 9px;
     }
 
-    .service-grid {
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #eaeaea;
+    }
+
+    .feature-check {
+      color: var(--green);
+      font-weight: 900;
+      font-size: 14px;
+      line-height: 1.2;
+    }
+
+    /* Live Demos */
+    .demo-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
     }
 
-    .service-btn {
-      background: var(--card);
+    .demo-btn {
+      background: var(--card-inner);
       border: 1px solid var(--border-subtle);
       border-radius: 12px;
       padding: 14px 10px;
       text-align: center;
+      text-decoration: none;
       color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 6px;
-      cursor: pointer;
-      transition: all 0.15s ease;
+      transition: all 0.2s ease;
     }
 
-    .service-btn:active {
+    .demo-btn:active {
       border-color: var(--gold);
-      background: #1b2129;
+      background: #23232a;
       transform: scale(0.97);
     }
 
-    .service-icon {
-      font-size: 24px;
+    .demo-name {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--gold-light);
     }
 
-    .service-title {
-      font-size: 12px;
-      font-weight: 700;
-      color: #f3f4f6;
+    .demo-type {
+      font-size: 10.5px;
+      color: var(--text-muted);
     }
 
-    .service-sub {
-      font-size: 10px;
-      color: var(--text-sub);
-    }
-
-    /* मॉड्यूल 4: डायरेक्ट बुकिंग */
-    .booking-card {
-      background: linear-gradient(145deg, #161e27 0%, #0d1217 100%);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 16px;
+    /* Action CTAs */
+    .cta-container {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      text-align: center;
-    }
-
-    .discount-tag {
-      background: #064e3b;
-      border: 1px solid #10b981;
-      color: #6ee7b7;
-      font-size: 11px;
-      font-weight: 800;
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin: 0 auto;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .booking-title {
-      font-size: 17px;
-      font-weight: 800;
-      color: #ffffff;
-      line-height: 1.3;
-    }
-
-    .booking-desc {
-      font-size: 12px;
-      color: var(--text-sub);
-      line-height: 1.5;
-    }
-
-    /* फुटर */
-    .footer {
+      gap: 10px;
       margin-top: 4px;
-      background: #101418;
+    }
+
+    .btn-main-whatsapp {
+      width: 100%;
+      padding: 16px;
       border-radius: 14px;
-      padding: 10px;
-      display: flex;
-      justify-content: space-around;
-      border: 1px solid var(--border-subtle);
-    }
-
-    .f-link {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      text-decoration: none;
-      color: var(--text-sub);
-      font-size: 10px;
-      font-weight: bold;
-    }
-
-    .f-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: #182028;
-      border: 1px solid var(--border-subtle);
+      border: none;
+      background: #25D366;
+      color: #08210f;
+      font-size: 14.5px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      gap: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 18px rgba(37, 211, 102, 0.25);
+      transition: transform 0.15s ease;
+    }
+
+    .btn-main-whatsapp:active {
+      transform: scale(0.98);
+    }
+
+    .btn-call {
+      width: 100%;
+      padding: 15px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--card-inner);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .btn-call:active {
+      background: #24242c;
+      transform: scale(0.98);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 8px 0 16px;
+      font-size: 11px;
+      color: #71717a;
     }
   </style>
 </head>
@@ -610,152 +298,120 @@
 
   <div class="container">
     
-    <!-- हेडर -->
+    <!-- Header -->
     <header class="header">
-      <div class="hotel-badge">5-STAR LUXURY HOSPITALITY</div>
-      <h1 class="brand-title">SAYAJI</h1>
-      <div class="hotel-sub">Vijay Nagar • Indore • Madhya Pradesh</div>
-
-      <div class="rating-pill">
-        <span style="color:#4285F4;font-weight:bold;">G</span> Google Rating 4.6
-        <span class="stars">★★★★★</span> (24,000+)
+      <div class="badge-agency">
+        <span class="dot-live"></span> Reputech Digital
       </div>
+      <h1 class="hero-title">
+        Get 10x More 5-Star <span>Google Reviews</span>
+      </h1>
+      <p class="hero-desc">
+        Next-gen contactless NFC & QR standees built for retail stores, showrooms, cafes, and restaurants.
+      </p>
     </header>
 
-    <!-- 4 मेन नेविगेशन टैब्स -->
-    <nav class="nav-tabs">
-      <button class="tab-btn active" id="nav-reviews" onclick="window.switchTab('reviews')">
-        <span class="tab-icon">⭐</span> Review
-      </button>
-      <button class="tab-btn" id="nav-dining" onclick="window.switchTab('dining')">
-        <span class="tab-icon">🍽️</span> Menu
-      </button>
-      <button class="tab-btn" id="nav-services" onclick="window.switchTab('services')">
-        <span class="tab-icon">🛎️</span> Service
-      </button>
-      <button class="tab-btn" id="nav-booking" onclick="window.switchTab('booking')">
-        <span class="tab-icon">🏨</span> Direct Stay
-      </button>
-    </nav>
-
-    <!-- ================= 1. रिव्यूज टैब ================= -->
-    <div id="view-reviews" class="tab-content active">
-      
-      <div class="steps">
-        <div><span class="step-num">1</span> Pick Experience</div>
-        <div><span class="step-num">2</span> Tap Button</div>
-        <div><span class="step-num">3</span> Paste & Post</div>
+    <!-- Impact Stats -->
+    <div class="stats-card">
+      <div>
+        <div class="stat-number">15s</div>
+        <div class="stat-label">Review Time</div>
       </div>
-
-      <div class="pills">
-        <button class="pill-btn active" id="pill-all" onclick="window.setCategory('all')">✨ ALL EXPERIENCE</button>
-        <button class="pill-btn" id="pill-stay" onclick="window.setCategory('stay')">🛏️ LUXURY STAY</button>
-        <button class="pill-btn" id="pill-dining" onclick="window.setCategory('dining')">🍢 KEBABSVILLE & DINING</button>
-        <button class="pill-btn" id="pill-events" onclick="window.setCategory('events')">🎉 BANQUETS & EVENTS</button>
-        <button class="pill-btn" id="pill-hospitality" onclick="window.setCategory('hospitality')">🛎️ FRONT DESK & STAFF</button>
+      <div>
+        <div class="stat-number">+400%</div>
+        <div class="stat-label">More Reviews</div>
       </div>
-
-      <div class="toolbar">
-        <div class="live-status"><span class="dot"></span> 100% Unique Review</div>
-        <div class="lang-box">
-          <button class="lang-btn active" id="btn-en" onclick="window.setLanguage('en')">EN</button>
-          <button class="lang-btn" id="btn-hi" onclick="window.setLanguage('hi')">HINGLISH</button>
-        </div>
+      <div>
+        <div class="stat-number">0%</div>
+        <div class="stat-label">Typing Effort</div>
       </div>
-
-      <div class="review-box">
-        <div class="review-content" id="review-target">Unmatched luxury hospitality at Sayaji Hotel Indore! The rooms are exceptionally clean, spacious, and comfortable. Breakfast spread was royal and front desk team was extremely courteous. 10/10 recommended in Indore!</div>
-      </div>
-
-      <button class="btn-shuffle" onclick="window.nextReview()">
-        <span>🎲</span> NEXT REVIEW (DUSRA REVIEW)
-      </button>
-
-      <button class="btn-cta" id="cta-btn" onclick="window.copyAndRedirect()">
-        📋 COPY & RATE 5-STAR
-      </button>
-
     </div>
 
-    <!-- ================= 2. इन-रूम डिजिटल मेन्यू ================= -->
-    <div id="view-dining" class="tab-content">
+    <!-- How It Works -->
+    <div class="section-card">
+      <div class="section-title">⚡ How It Works For Customers</div>
       
-      <div class="menu-card">
-        <div class="menu-header">
-          <span>🍢 Signature Starters</span>
-          <span style="font-size: 10px; color: var(--gold);">24x7 KITCHEN</span>
-        </div>
-
-        <div class="menu-item">
-          <div class="item-info">
-            <span class="item-name"><span class="item-tag-veg"></span> Paneer Tikka Angara</span>
-            <span class="item-price">₹425</span>
-          </div>
-          <div class="item-actions">
-            <button class="qty-btn" onclick="window.updateCart('Paneer Tikka Angara', 425, -1)">-</button>
-            <span class="qty-count" id="qty-item-1">0</span>
-            <button class="qty-btn" onclick="window.updateCart('Paneer Tikka Angara', 425, 1)">+</button>
-          </div>
-        </div>
-
-        <div class="menu-item">
-          <div class="item-info">
-            <span class="item-name"><span class="item-tag-nonveg"></span> Kebabsville Murg Tikka</span>
-            <span class="item-price">₹545</span>
-          </div>
-          <div class="item-actions">
-            <button class="qty-btn" onclick="window.updateCart('Kebabsville Murg Tikka', 545, -1)">-</button>
-            <span class="qty-count" id="qty-item-2">0</span>
-            <button class="qty-btn" onclick="window.updateCart('Kebabsville Murg Tikka', 545, 1)">+</button>
-          </div>
-        </div>
-
-        <div class="menu-item">
-          <div class="item-info">
-            <span class="item-name"><span class="item-tag-veg"></span> Crispy Corn Salt & Pepper</span>
-            <span class="item-price">₹360</span>
-          </div>
-          <div class="item-actions">
-            <button class="qty-btn" onclick="window.updateCart('Crispy Corn Salt & Pepper', 360, -1)">-</button>
-            <span class="qty-count" id="qty-item-3">0</span>
-            <button class="qty-btn" onclick="window.updateCart('Crispy Corn Salt & Pepper', 360, 1)">+</button>
-          </div>
+      <div class="flow-step">
+        <div class="step-icon">📱</div>
+        <div class="step-text">
+          <h4>1. Just Tap or Scan</h4>
+          <p>Customer taps their phone on the standee or scans the QR code. Zero apps to install.</p>
         </div>
       </div>
 
-      <div class="menu-card">
-        <div class="menu-header">
-          <span>🍲 Royal Main Course</span>
-          <span style="font-size: 10px; color: var(--gold);">ROOM SERVICE</span>
+      <div class="flow-step">
+        <div class="step-icon">✨</div>
+        <div class="step-text">
+          <h4>2. Instant Unique Review</h4>
+          <p>Portal instantly generates a fresh, authentic 5-star review tailored to your offerings.</p>
         </div>
+      </div>
 
-        <div class="menu-item">
-          <div class="item-info">
-            <span class="item-name"><span class="item-tag-veg"></span> Sayaji Dal Makhani</span>
-            <span class="item-price">₹395</span>
-          </div>
-          <div class="item-actions">
-            <button class="qty-btn" onclick="window.updateCart('Sayaji Dal Makhani', 395, -1)">-</button>
-            <span class="qty-count" id="qty-item-4">0</span>
-            <button class="qty-btn" onclick="window.updateCart('Sayaji Dal Makhani', 395, 1)">+</button>
-          </div>
+      <div class="flow-step">
+        <div class="step-icon">⭐</div>
+        <div class="step-text">
+          <h4>3. 1-Click Paste & Post</h4>
+          <p>Customer taps "Copy & Rate", and Google directly opens up to paste and submit in 2 seconds.</p>
         </div>
+      </div>
+    </div>
 
-        <div class="menu-item">
-          <div class="item-info">
-            <span class="item-name"><span class="item-tag-nonveg"></span> Handi Butter Chicken</span>
-            <span class="item-price">₹565</span>
-          </div>
-          <div class="item-actions">
-            <button class="qty-btn" onclick="window.updateCart('Handi Butter Chicken', 565, -1)">-</button>
-            <span class="qty-count" id="qty-item-5">0</span>
-            <button class="qty-btn" onclick="window.updateCart('Handi Butter Chicken', 565, 1)">+</button>
-          </div>
+    <!-- What Store Gets -->
+    <div class="section-card">
+      <div class="section-title">💎 What Your Business Gets</div>
+      <div class="features-list">
+        <div class="feature-item">
+          <span class="feature-check">✓</span> <span><strong>Custom Smart Standee:</strong> High-grade contactless NFC & QR display designed for counter elegance.</span>
         </div>
+        <div class="feature-item">
+          <span class="feature-check">✓</span> <span><strong>100% Tailored Web Portal:</strong> Fully customized to your brand colors, logo, products, and services.</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-check">✓</span> <span><strong>Ultra-Fast Performance:</strong> Instant zero-lag mobile loading even on slow internet connections.</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-check">✓</span> <span><strong>Non-Repetitive Combinations:</strong> Generates distinct reviews so Google's filters never flag them as spam.</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-check">✓</span> <span><strong>Integrated Action Hub:</strong> Direct Google Review, Maps Directions, Call, and Website buttons in one place.</span>
+        </div>
+      </div>
+    </div>
 
-        <div class="menu-item">
-          <div class="item-info">
-            <span class="item-name"><span class="item-tag-veg"></span> Butter Garlic Naan (2 Pcs)</span>
-            <span class="item-price">₹120</span>
-          </div>
-          <div class="item-acti
+    <!-- Live Demos Section (Fixed Link with Capital 'R') -->
+    <div class="section-card">
+      <div class="section-title">🔍 Try Our Live Demo Websites</div>
+      <div class="demo-grid">
+        <a href="https://hk575203-wq.github.io/cafe-provence/" class="demo-btn" target="_blank">
+          <div style="font-size: 22px;">☕</div>
+          <div class="demo-name">Café Provence</div>
+          <div class="demo-type">Bistro & Fine Dining</div>
+        </a>
+        <a href="https://hk575203-wq.github.io/Raymond-indore/" class="demo-btn" target="_blank">
+          <div style="font-size: 22px;">👔</div>
+          <div class="demo-name">The Raymond Shop</div>
+          <div class="demo-type">Formal Wear & Tailoring</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Contact & Order CTAs (Clean, No Raw Numbers) -->
+    <div class="cta-container">
+      <a href="https://wa.me/918319949010?text=Hi%20Reputech%20Digital,%20I%20checked%20your%20Smart%20Review%20Standee%20demo%20and%20want%20to%20get%20one%20for%20my%20business." class="btn-main-whatsapp" target="_blank">
+        <span>💬</span> Connect on WhatsApp
+      </a>
+      <a href="tel:+919993305505" class="btn-call">
+        <span>📞</span> Schedule a Live Store Demo
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      Reputech Digital • Smart Review Standee Solutions<br>
+      Empowering local businesses with contactless technology.
+    </footer>
+
+  </div>
+
+</body>
+</html>
