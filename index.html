@@ -191,7 +191,7 @@
       line-height: 1.2;
     }
 
-    /* Live Demos */
+    /* Live Demos Grid */
     .demo-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -211,6 +211,12 @@
       align-items: center;
       gap: 6px;
       transition: all 0.2s ease;
+    }
+
+    .demo-btn.featured {
+      grid-column: span 2;
+      background: linear-gradient(135deg, #1c1c24 0%, #16181f 100%);
+      border: 1px solid var(--border);
     }
 
     .demo-btn:active {
@@ -307,7 +313,7 @@
         Get 10x More 5-Star <span>Google Reviews</span>
       </h1>
       <p class="hero-desc">
-        Next-gen contactless NFC & QR standees built for retail stores, showrooms, cafes, and restaurants.
+        Next-gen contactless NFC & QR standees built for luxury hotels, showrooms, cafes, and retail stores.
       </p>
     </header>
 
@@ -367,18 +373,18 @@
           <span class="feature-check">✓</span> <span><strong>100% Tailored Web Portal:</strong> Fully customized to your brand colors, logo, products, and services.</span>
         </div>
         <div class="feature-item">
-          <span class="feature-check">✓</span> <span><strong>Ultra-Fast Performance:</strong> Instant zero-lag mobile loading even on slow internet connections.</span>
+          <span class="feature-check">✓</span> <span><strong>Multi-Utility Features:</strong> Guest Wi-Fi access, direct booking, and WhatsApp service integration.</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-check">✓</span> <span><strong>Ultra-Fast Performance:</strong> Instant zero-lag mobile loading even on slow 4G connections.</span>
         </div>
         <div class="feature-item">
           <span class="feature-check">✓</span> <span><strong>Non-Repetitive Combinations:</strong> Generates distinct reviews so Google's filters never flag them as spam.</span>
         </div>
-        <div class="feature-item">
-          <span class="feature-check">✓</span> <span><strong>Integrated Action Hub:</strong> Direct Google Review, Maps Directions, Call, and Website buttons in one place.</span>
-        </div>
       </div>
     </div>
 
-    <!-- Live Demos Section (Fixed Link with Capital 'R') -->
+    <!-- Live Demos Section (3 Distinct Industries) -->
     <div class="section-card">
       <div class="section-title">🔍 Try Our Live Demo Websites</div>
       <div class="demo-grid">
@@ -390,14 +396,19 @@
         <a href="https://hk575203-wq.github.io/Raymond-indore/" class="demo-btn" target="_blank">
           <div style="font-size: 22px;">👔</div>
           <div class="demo-name">The Raymond Shop</div>
-          <div class="demo-type">Formal Wear & Tailoring</div>
+          <div class="demo-type">Fashion & Retail</div>
+        </a>
+        <a href="https://hk575203-wq.github.io/sayaji-indore/" class="demo-btn featured" target="_blank">
+          <div style="font-size: 24px;">🏨</div>
+          <div class="demo-name">Sayaji Hotel Indore</div>
+          <div class="demo-type">5-Star Luxury & Guest Portal (Wi-Fi + Services)</div>
         </a>
       </div>
     </div>
 
-    <!-- Contact & Order CTAs (Clean, No Raw Numbers) -->
+    <!-- Contact & Order CTAs -->
     <div class="cta-container">
-      <a href="https://wa.me/918319949010?text=Hi%20Reputech%20Digital,%20I%20checked%20your%20Smart%20Review%20Standee%20demo%20and%20want%20to%20get%20one%20for%20my%20business." class="btn-main-whatsapp" target="_blank">
+      <a href="https://wa.me/918319949010?text=Hi%20Reputech%20Digital,%20I%20checked%20your%20Smart%20Review%20Standee%20demos%20and%20want%20to%20get%20one%20for%20my%20business." class="btn-main-whatsapp" target="_blank">
         <span>💬</span> Connect on WhatsApp
       </a>
       <a href="tel:+919993305505" class="btn-call">
